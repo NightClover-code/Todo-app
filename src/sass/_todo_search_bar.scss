@@ -1,0 +1,33 @@
+.todo__app__header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  .title {
+    font-size: calc(20px + 2vw);
+    text-transform: uppercase;
+    letter-spacing: 15px;
+  }
+  .icon__container {
+    width: 35px;
+    img {
+      width: 100%;
+    }
+  }
+}
+.todo__search__bar {
+  width: 100%;
+  outline: none;
+  border: none;
+  height: 60px;
+  border-radius: 5px;
+  background-color: $very-dark-desaturated-blue;
+  font-size: inherit;
+  color: $light-grayish-blue-dark;
+  font-family: inherit;
+  font-weight: 400;
+  padding: 0 10%;
+  &::placeholder {
+    color: $dark-grayish-blue-dark;
+  }
+  margin: 30px auto;
+}
