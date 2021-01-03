@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 
 const TodoFilters = ({ todos, setTodos, setFilterType }) => {
-  //filters list Ref
+  //refs
   const listRef = useRef(null);
   //toggling color
   const toggleColor = event => {
@@ -14,11 +14,7 @@ const TodoFilters = ({ todos, setTodos, setFilterType }) => {
   };
   //updtating filter type state
   const updateFilterType = event => {
-    Array.from(listRef.current.children).forEach(item => {
-      if (item.id === event.target.id) {
-        setFilterType(item.id);
-      }
-    });
+    setFilterType(event.target.id);
   };
   //clearing completed todos
   const clearCompleted = () => {
@@ -31,8 +27,8 @@ const TodoFilters = ({ todos, setTodos, setFilterType }) => {
         className="filters"
         ref={listRef}
         onClick={e => {
-          toggleColor(e);
           updateFilterType(e);
+          toggleColor(e);
         }}
       >
         <li className="blue__text" id="all">

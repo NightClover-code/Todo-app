@@ -7,13 +7,13 @@
   min-height: 100vh;
   background: url('../images/bg-desktop-dark.jpg') top left 100% no-repeat,
     $very-dark-blue bottom left no-repeat;
-  background-size: 100% 30%;
+  background-size: 100% calc(20% + 10vw);
   .wrapper {
     min-width: 280px;
     max-width: 800px;
     width: 90%;
     margin: auto;
-    padding-top: 10vh;
+    padding-top: 12vh;
     footer {
       display: flex;
       justify-content: center;
@@ -37,4 +37,7 @@
 }
 .blue__text {
   color: $bright-blue;
+}
+.invisible {
+  display: none !important;
 }

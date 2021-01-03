@@ -6,7 +6,14 @@ const TodoSearchBar = ({ user, setUser, todos, setTodos }) => {
   const onFormSubmit = event => {
     event.preventDefault();
     if (user) {
-      setTodos([...todos, { title: user, isCompleted: false, id: uuidv4() }]);
+      setTodos([
+        ...todos,
+        {
+          title: user,
+          isCompleted: false,
+          id: uuidv4(),
+        },
+      ]);
       setUser('');
     }
   };

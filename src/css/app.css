@@ -197,7 +197,7 @@
 .app__container {
   min-height: 100vh;
   background: url("../images/bg-desktop-dark.jpg") top left 100% no-repeat, #161722 bottom left no-repeat;
-  background-size: 100% 30%;
+  background-size: 100% calc(20% + 10vw);
 }
 
 .app__container .wrapper {
@@ -205,7 +205,7 @@
   max-width: 800px;
   width: 90%;
   margin: auto;
-  padding-top: 10vh;
+  padding-top: 12vh;
 }
 
 .app__container .wrapper footer {
@@ -237,5 +237,9 @@
 
 .blue__text {
   color: #3a7bfd;
+}
+
+.invisible {
+  display: none !important;
 }
 /*# sourceMappingURL=app.css.map */

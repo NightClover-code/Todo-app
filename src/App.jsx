@@ -16,7 +16,6 @@ const App = () => {
   const [user, setUser] = useState('');
   const [todos, setTodos] = useState(defaultTodos);
   const [filterType, setFilterType] = useState('all');
-  const [filteredTodos, setFilteredTodos] = useState(defaultTodos);
   return (
     <div className="app__container">
       <div className="background"></div>
@@ -28,13 +27,10 @@ const App = () => {
           setTodos={setTodos}
         />
         <TodoList
-          defaultTodos={defaultTodos}
           todos={todos}
           setTodos={setTodos}
           filterType={filterType}
           setFilterType={setFilterType}
-          filteredTodos={filteredTodos}
-          setFilteredTodos={setFilteredTodos}
         />
         <footer>
           <p>Drag and drop to reorder list</p>

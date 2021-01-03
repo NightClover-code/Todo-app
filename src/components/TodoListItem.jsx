@@ -1,35 +1,44 @@
 import React, { useRef, useEffect } from 'react';
 
-const TodoListItem = ({
-  todo,
-  todos,
-  setTodos,
-  todoItemRef,
-  filterType,
-  filteredTodos,
-  setFilteredTodos,
-}) => {
+const TodoListItem = ({ todo, todos, setTodos, filterType, id }) => {
   //refs
   const circleRef = useRef(null);
   const checkIconRef = useRef(null);
   const todoTextRef = useRef(null);
-
+  const todoListItem = useRef(null);
   //filter Handler
 
   //use Effect
   useEffect(() => {
     switch (filterType) {
       case 'completed':
-        setFilteredTodos(todos.filter(todo => todo.isCompleted === true));
+        todos.map(someTodo => {
+          if (
+            someTodo.isCompleted === false &&
+            someTodo.id === todoListItem.current.getAttribute('id')
+          ) {
+            todoListItem.current.classList.add('invisible');
+          }
+          return someTodo;
+        });
         break;
       case 'active':
-        setFilteredTodos(todos.filter(todo => todo.isCompleted === false));
+        todoListItem.current.classList.remove('invisible');
+        todos.map(someTodo => {
+          if (
+            someTodo.isCompleted === true &&
+            someTodo.id === todoListItem.current.getAttribute('id')
+          ) {
+            todoListItem.current.classList.add('invisible');
+          }
+          return someTodo;
+        });
         break;
       default:
-        setFilteredTodos(todos);
+        todoListItem.current.classList.remove('invisible');
+        break;
     }
-  }, [filterType, todos, setFilteredTodos]);
-
+  }, [filterType, todos]);
   //deleting todos
   const onCrossIconClick = () => {
     setTodos(todos.filter(someTodo => someTodo !== todo));
@@ -39,10 +48,10 @@ const TodoListItem = ({
     circleRef.current.classList.toggle('completed');
     setTodos(
       todos.map(someTodo => {
-        if (someTodo.title === todo.title) {
+        if (someTodo.id === todo.id) {
           return {
             ...someTodo,
-            isCompleted: !todo.isCompleted,
+            isCompleted: !someTodo.isCompleted,
           };
         }
         return someTodo;
@@ -57,7 +66,7 @@ const TodoListItem = ({
     todoTextRef.current.classList.toggle('cross__text');
   };
   return (
-    <div className="todo__list__item" ref={todoItemRef}>
+    <div className="todo__list__item" ref={todoListItem} id={id}>
       <div className="todo__item__left">
         <div className="check__circle__container" onClick={onCheckCircleClick}>
           <div className="check__circle" ref={circleRef}>
