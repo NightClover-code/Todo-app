@@ -1,5 +1,5 @@
 //importing react library and uuidv4 (random id's)
-import React, { useState } from 'react';
+import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 // Search bar component
 const TodoSearchBar = ({

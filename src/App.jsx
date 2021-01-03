@@ -2,6 +2,8 @@
 import './css/app.css';
 //importing react library and uuidv4 (random id's)
 import React, { useEffect, useState, useRef } from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import { v4 as uuidv4 } from 'uuid';
 //importing components
 import TodoList from './components/TodoList';
@@ -51,31 +53,31 @@ const App = () => {
       }`}
       ref={appRef}
     >
-      <div className="background"></div>
-      <div className="wrapper">
-        <TodoSearchBar
-          user={user}
-          setUser={setUser}
-          todos={todos}
-          setTodos={setTodos}
-          lightMode={lightMode}
-          setLightMode={setLightMode}
-        />
-        <TodoList
-          todos={todos}
-          setTodos={setTodos}
-          filterType={filterType}
-          setFilterType={setFilterType}
-          lightMode={lightMode}
-        />
-        <footer>
-          <p className={lightMode === true ? 'white__footer__text' : ''}>
-            Drag and drop to reorder list
-          </p>
-        </footer>
-      </div>
+      <DndProvider backend={HTML5Backend}>
+        <div className="wrapper">
+          <TodoSearchBar
+            user={user}
+            setUser={setUser}
+            todos={todos}
+            setTodos={setTodos}
+            lightMode={lightMode}
+            setLightMode={setLightMode}
+          />
+          <TodoList
+            todos={todos}
+            setTodos={setTodos}
+            filterType={filterType}
+            setFilterType={setFilterType}
+            lightMode={lightMode}
+          />
+          <footer>
+            <p className={lightMode === true ? 'white__footer__text' : ''}>
+              Drag and drop to reorder list
+            </p>
+          </footer>
+        </div>
+      </DndProvider>
     </div>
   );
 };
-
 export default App;
