@@ -74,3 +74,8 @@
   color: $dark-grayish-blue-light !important;
   font-weight: 400 !important;
 }
+//lightMode separate filter
+.white__filters__separate {
+  background: $very-light-gray !important;
+  box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.1) !important;
+}

@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 //importing components
 import TodoList from './components/TodoList';
 import TodoSearchBar from './components/TodoSearchBar';
+import TodoFilters from './components/TodoFilters';
 //default todos
 const defaultTodos = [
   { title: 'Take out the trash', isCompleted: false, id: uuidv4() },
@@ -45,6 +46,20 @@ const App = () => {
     };
     saveToLocal();
   }, [todos]);
+  //filter component lifted functions
+  //toggling filter items color
+  const toggleColor = (event, listRef) => {
+    Array.from(listRef.current.children).forEach(item => {
+      item.classList.remove('blue__text');
+    });
+    if (event.target.tagName === 'LI') {
+      event.target.classList.add('blue__text');
+    }
+  };
+  //updtating filter type state
+  const updateFilterType = event => {
+    setFilterType(event.target.id);
+  };
   //returning jsx
   return (
     <div
@@ -69,7 +84,20 @@ const App = () => {
             filterType={filterType}
             setFilterType={setFilterType}
             lightMode={lightMode}
+            toggleColor={toggleColor}
+            updateFilterType={updateFilterType}
           />
+          <div
+            className={`todo__filters__separate ${
+              lightMode === true ? 'white__filters__separate' : ''
+            }`}
+          >
+            <TodoFilters
+              lightMode={lightMode}
+              toggleColor={toggleColor}
+              updateFilterType={updateFilterType}
+            />
+          </div>
           <footer>
             <p className={lightMode === true ? 'white__footer__text' : ''}>
               Drag and drop to reorder list

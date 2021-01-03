@@ -1,7 +1,7 @@
 //importing react library
 import React, { useCallback } from 'react';
 //importing components
-import TodoFilters from './TodoFilters';
+import TodoFiltersContainer from './TodoFiltersContainer';
 import TodoListItem from './TodoListItem';
 import update from 'immutability-helper';
 //list component
@@ -11,6 +11,8 @@ const TodoList = ({
   filterType,
   setFilterType,
   lightMode,
+  toggleColor,
+  updateFilterType,
 }) => {
   //drag function
   const moveTodo = useCallback(
@@ -47,11 +49,13 @@ const TodoList = ({
   return (
     <div className={`todo__list ${lightMode === true ? 'white__list' : ''}`}>
       {returnedTodos}
-      <TodoFilters
+      <TodoFiltersContainer
         todos={todos}
         setFilterType={setFilterType}
         setTodos={setTodos}
         lightMode={lightMode}
+        toggleColor={toggleColor}
+        updateFilterType={updateFilterType}
       />
     </div>
   );

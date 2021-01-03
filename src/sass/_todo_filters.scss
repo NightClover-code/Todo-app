@@ -32,3 +32,46 @@
     }
   }
 }
+.todo__filters__separate {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  background: $very-dark-desaturated-blue;
+  font-size: 18px;
+  color: $light-grayish-blue-dark;
+  font-family: inherit;
+  margin-top: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.5);
+  .filters {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    li {
+      list-style: none;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        color: $light-grayish-blue-dark-hover;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .todo__filters {
+    .filters {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .todo__filters__separate {
+    display: none;
+  }
+}
