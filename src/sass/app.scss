@@ -2,12 +2,10 @@
 @import './todo_search_bar';
 @import './todo_list';
 @import './todo_filters';
+@import './classes';
 
 .app__container {
   min-height: 100vh;
-  background: url('../images/bg-desktop-dark.jpg') top left 100% no-repeat,
-    $very-dark-blue bottom left no-repeat;
-  background-size: 100% calc(20% + 10vw);
   .wrapper {
     min-width: 280px;
     max-width: 800px;
@@ -19,25 +17,11 @@
       justify-content: center;
       align-content: center;
       p {
-        margin-top: 50px;
+        margin: 50px 0;
         font-size: 14px;
-        color: $very-dark-grayish-blue-dark;
         font-weight: 700;
+        color: $very-dark-grayish-blue-dark;
       }
     }
   }
-}
-//additional classes
-.completed {
-  background: $background !important;
-}
-.cross__text {
-  color: $very-dark-grayish-blue-dark;
-  text-decoration: line-through;
-}
-.blue__text {
-  color: $bright-blue;
-}
-.invisible {
-  display: none !important;
 }

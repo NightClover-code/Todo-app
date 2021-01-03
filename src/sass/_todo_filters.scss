@@ -10,11 +10,11 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   color: $very-dark-grayish-blue-dark;
-  font-weight: 700;
   .filters {
     width: 31%;
     display: flex;
     justify-content: space-between;
+    font-weight: 700;
     li {
       list-style: none;
       cursor: pointer;

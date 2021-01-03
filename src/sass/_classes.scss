@@ -1,0 +1,76 @@
+//additional classes
+.completed {
+  background: $background !important;
+}
+//crossed text darkMode / lightMode
+.cross__text__dark {
+  color: $very-dark-grayish-blue-dark;
+  text-decoration: line-through;
+}
+.cross__text__light {
+  color: $light-grayish-blue-light;
+  text-decoration: line-through;
+}
+.blue__text {
+  color: $bright-blue;
+}
+.invisible {
+  display: none !important;
+}
+//light Mode circle check
+.light__circle__border {
+  background-color: $light-grayish-blue-light !important;
+}
+.white__circle {
+  background: $very-light-gray !important;
+}
+//background lightMode / darkMode
+.light__background {
+  background: url('../images/bg-desktop-light.jpg') top left 100% no-repeat,
+    $very-light-grayish-blue bottom left no-repeat !important;
+  background-size: 100% calc(20% + 10vw) !important;
+  background-attachment: fixed !important;
+}
+.dark__background {
+  background: url('../images/bg-desktop-dark.jpg') top left 100% no-repeat,
+    $very-dark-blue bottom left no-repeat !important;
+  background-size: 100% calc(20% + 10vw) !important;
+  background-attachment: fixed !important;
+}
+//lightMode list and items styling
+.white__list__item {
+  background: $very-light-gray !important;
+  border-color: $light-grayish-blue-light !important;
+  color: $very-dark-grayish-blue-light !important;
+}
+.white__list {
+  box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.1) !important;
+}
+//lightMode Search bar
+.white__search__bar {
+  color: $very-dark-grayish-blue-light !important;
+  background: $very-light-gray !important;
+}
+//lightMode filters
+.white__filters__list {
+  background: $very-light-gray !important;
+  color: $dark-grayish-blue-light !important;
+}
+.white__filters__hover {
+  li {
+    &:hover {
+      color: $very-dark-grayish-blue-light !important;
+    }
+  }
+}
+//lightMode clear completed hovers
+.white__span__hover {
+  &:hover {
+    color: $very-dark-grayish-blue-light !important;
+  }
+}
+//lightMode footer
+.white__footer__text {
+  color: $dark-grayish-blue-light !important;
+  font-weight: 400 !important;
+}

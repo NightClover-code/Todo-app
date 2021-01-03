@@ -2,9 +2,14 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 // Search bar component
-const TodoSearchBar = ({ user, setUser, todos, setTodos }) => {
-  //dark mode / light mode state
-  const [lightMode, setLightMode] = useState(false);
+const TodoSearchBar = ({
+  user,
+  setUser,
+  todos,
+  setTodos,
+  lightMode,
+  setLightMode,
+}) => {
   //toggling between light Mode and Dark Mode
   const toggleModeHandler = () => {
     setLightMode(!lightMode);
@@ -46,7 +51,9 @@ const TodoSearchBar = ({ user, setUser, todos, setTodos }) => {
       <form onSubmit={e => onFormSubmit(e)}>
         <input
           type="text"
-          className="todo__search__bar"
+          className={`todo__search__bar ${
+            lightMode === true ? 'white__search__bar' : ''
+          }`}
           placeholder="What's going on today ?"
           onChange={e => setUser(e.target.value)}
           value={user}

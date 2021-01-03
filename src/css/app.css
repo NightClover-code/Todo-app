@@ -9,9 +9,9 @@
 }
 
 .todo__app__header .title {
-  font-size: calc(20px + 2vw);
+  font-size: calc(20px + 1.75vw);
   text-transform: uppercase;
-  letter-spacing: 15px;
+  letter-spacing: 20px;
 }
 
 .todo__app__header .icon__container {
@@ -71,6 +71,7 @@
 }
 
 .todo__list .todo__list__item {
+  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -161,7 +162,6 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   color: #4d5066;
-  font-weight: 700;
 }
 
 .todo__filters .filters {
@@ -172,6 +172,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  font-weight: 700;
 }
 
 .todo__filters .filters li {
@@ -195,10 +196,84 @@
   color: #e4e5f1;
 }
 
+.completed {
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(10%, #57ddff), color-stop(80%, #c058f3)) !important;
+}
+
+.cross__text__dark {
+  color: #4d5066;
+  text-decoration: line-through;
+}
+
+.cross__text__light {
+  color: #d2d3db;
+  text-decoration: line-through;
+}
+
+.blue__text {
+  color: #3a7bfd;
+}
+
+.invisible {
+  display: none !important;
+}
+
+.light__circle__border {
+  background-color: #d2d3db !important;
+}
+
+.white__circle {
+  background: #fafafa !important;
+}
+
+.light__background {
+  background: url("../images/bg-desktop-light.jpg") top left 100% no-repeat, #e4e5f1 bottom left no-repeat !important;
+  background-size: 100% calc(20% + 10vw) !important;
+  background-attachment: fixed !important;
+}
+
+.dark__background {
+  background: url("../images/bg-desktop-dark.jpg") top left 100% no-repeat, #161722 bottom left no-repeat !important;
+  background-size: 100% calc(20% + 10vw) !important;
+  background-attachment: fixed !important;
+}
+
+.white__list__item {
+  background: #fafafa !important;
+  border-color: #d2d3db !important;
+  color: #484b6a !important;
+}
+
+.white__list {
+  -webkit-box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.1) !important;
+          box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+.white__search__bar {
+  color: #484b6a !important;
+  background: #fafafa !important;
+}
+
+.white__filters__list {
+  background: #fafafa !important;
+  color: #9394a5 !important;
+}
+
+.white__filters__hover li:hover {
+  color: #484b6a !important;
+}
+
+.white__span__hover:hover {
+  color: #484b6a !important;
+}
+
+.white__footer__text {
+  color: #9394a5 !important;
+  font-weight: 400 !important;
+}
+
 .app__container {
   min-height: 100vh;
-  background: url("../images/bg-desktop-dark.jpg") top left 100% no-repeat, #161722 bottom left no-repeat;
-  background-size: 100% calc(20% + 10vw);
 }
 
 .app__container .wrapper {
@@ -221,26 +296,9 @@
 }
 
 .app__container .wrapper footer p {
-  margin-top: 50px;
+  margin: 50px 0;
   font-size: 14px;
-  color: #4d5066;
   font-weight: 700;
-}
-
-.completed {
-  background: -webkit-gradient(linear, left top, right bottom, color-stop(10%, #57ddff), color-stop(80%, #c058f3)) !important;
-}
-
-.cross__text {
   color: #4d5066;
-  text-decoration: line-through;
-}
-
-.blue__text {
-  color: #3a7bfd;
-}
-
-.invisible {
-  display: none !important;
 }
 /*# sourceMappingURL=app.css.map */

@@ -1,7 +1,7 @@
 //importing styles
 import './css/app.css';
 //importing react library and uuidv4 (random id's)
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 //importing components
 import TodoList from './components/TodoList';
@@ -14,10 +14,14 @@ const defaultTodos = [
 ];
 //App component
 const App = () => {
+  //refs
+  const appRef = useRef(null);
   //state
+  const [lightMode, setLightMode] = useState(false);
   const [user, setUser] = useState('');
   const [todos, setTodos] = useState([]);
   const [filterType, setFilterType] = useState('all');
+  //changing background based upon background mode
   //getting items from local storage
   const getLocalItems = () => {
     if (localStorage.getItem('todos') === null) {
@@ -41,7 +45,12 @@ const App = () => {
   }, [todos]);
   //returning jsx
   return (
-    <div className="app__container">
+    <div
+      className={`app__container ${
+        lightMode === true ? 'light__background' : 'dark__background'
+      }`}
+      ref={appRef}
+    >
       <div className="background"></div>
       <div className="wrapper">
         <TodoSearchBar
@@ -49,15 +58,20 @@ const App = () => {
           setUser={setUser}
           todos={todos}
           setTodos={setTodos}
+          lightMode={lightMode}
+          setLightMode={setLightMode}
         />
         <TodoList
           todos={todos}
           setTodos={setTodos}
           filterType={filterType}
           setFilterType={setFilterType}
+          lightMode={lightMode}
         />
         <footer>
-          <p>Drag and drop to reorder list</p>
+          <p className={lightMode === true ? 'white__footer__text' : ''}>
+            Drag and drop to reorder list
+          </p>
         </footer>
       </div>
     </div>

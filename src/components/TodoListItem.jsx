@@ -1,7 +1,7 @@
 //importing react library
 import React, { useRef, useEffect } from 'react';
 //list Item component
-const TodoListItem = ({ todo, todos, setTodos, filterType, id }) => {
+const TodoListItem = ({ todo, todos, setTodos, filterType, id, lightMode }) => {
   //refs
   const circleRef = useRef(null);
   const checkIconRef = useRef(null);
@@ -47,6 +47,9 @@ const TodoListItem = ({ todo, todos, setTodos, filterType, id }) => {
   };
   //checking completed todos
   const onCheckCircleClick = () => {
+    if (lightMode) {
+      circleRef.current.classList.toggle('white__circle');
+    }
     circleRef.current.classList.toggle('completed');
     setTodos(
       todos.map(someTodo => {
@@ -65,13 +68,34 @@ const TodoListItem = ({ todo, todos, setTodos, filterType, id }) => {
   const markAsComplete = () => {
     checkIconRef.current.style.visibility =
       todo.isCompleted === false ? 'visible' : 'hidden';
-    todoTextRef.current.classList.toggle('cross__text');
+    if (!lightMode) {
+      todoTextRef.current.classList.toggle('cross__text__dark');
+    } else {
+      todoTextRef.current.classList.toggle('cross__text__light');
+    }
   };
   return (
-    <div className="todo__list__item" ref={todoListItem} id={id}>
+    <div
+      className={`todo__list__item ${
+        lightMode === true ? 'white__list__item' : ''
+      } `}
+      draggable={true}
+      ref={todoListItem}
+      id={id}
+    >
       <div className="todo__item__left">
-        <div className="check__circle__container" onClick={onCheckCircleClick}>
-          <div className="check__circle" ref={circleRef}>
+        <div
+          className={`check__circle__container ${
+            lightMode === true ? 'light__circle__border' : ''
+          }`}
+          onClick={onCheckCircleClick}
+        >
+          <div
+            className={`check__circle ${
+              lightMode === true ? 'white__circle' : ''
+            }`}
+            ref={circleRef}
+          >
             <div className="check__circle__icon">
               <img
                 src="./images/icon-check.svg"
@@ -81,7 +105,7 @@ const TodoListItem = ({ todo, todos, setTodos, filterType, id }) => {
             </div>
           </div>
         </div>
-        <p className="todo__text" ref={todoTextRef}>
+        <p className={`todo__text`} ref={todoTextRef}>
           {todo.title}
         </p>
       </div>

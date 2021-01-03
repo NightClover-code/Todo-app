@@ -4,7 +4,13 @@ import React from 'react';
 import TodoFilters from './TodoFilters';
 import TodoListItem from './TodoListItem';
 //list component
-const TodoList = ({ todos, setTodos, filterType, setFilterType }) => {
+const TodoList = ({
+  todos,
+  setTodos,
+  filterType,
+  setFilterType,
+  lightMode,
+}) => {
   //returning todo items
   const returnedTodos = todos.map(todo => {
     return (
@@ -15,17 +21,19 @@ const TodoList = ({ todos, setTodos, filterType, setFilterType }) => {
         todos={todos}
         setTodos={setTodos}
         filterType={filterType}
+        lightMode={lightMode}
       />
     );
   });
   //returning todo list
   return (
-    <div className="todo__list">
+    <div className={`todo__list ${lightMode === true ? 'white__list' : ''}`}>
       {returnedTodos}
       <TodoFilters
         todos={todos}
         setFilterType={setFilterType}
         setTodos={setTodos}
+        lightMode={lightMode}
       />
     </div>
   );
