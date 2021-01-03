@@ -1,6 +1,7 @@
 //importing react library
 import React, { useRef, useEffect } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
+import Draggable from 'react-draggable'; // The default
 //list Item component
 const TodoListItem = ({
   todo,
@@ -135,45 +136,47 @@ const TodoListItem = ({
     }
   };
   return (
-    <div
-      className={`todo__list__item ${
-        lightMode === true ? 'white__list__item' : ''
-      } `}
-      style={{ opacity }}
-      draggable={true}
-      ref={todoListItem}
-      id={id}
-    >
-      <div className="todo__item__left">
-        <div
-          className={`check__circle__container ${
-            lightMode === true ? 'light__circle__border' : ''
-          }`}
-          onClick={onCheckCircleClick}
-        >
+    <Draggable>
+      <div
+        className={`todo__list__item ${
+          lightMode === true ? 'white__list__item' : ''
+        } `}
+        style={{ opacity }}
+        draggable="true"
+        ref={todoListItem}
+        id={id}
+      >
+        <div className="todo__item__left">
           <div
-            className={`check__circle ${
-              lightMode === true ? 'white__circle' : ''
+            className={`check__circle__container ${
+              lightMode === true ? 'light__circle__border' : ''
             }`}
-            ref={circleRef}
+            onClick={onCheckCircleClick}
           >
-            <div className="check__circle__icon">
-              <img
-                src="./images/icon-check.svg"
-                alt="check-icon"
-                ref={checkIconRef}
-              />
+            <div
+              className={`check__circle ${
+                lightMode === true ? 'white__circle' : ''
+              }`}
+              ref={circleRef}
+            >
+              <div className="check__circle__icon">
+                <img
+                  src="./images/icon-check.svg"
+                  alt="check-icon"
+                  ref={checkIconRef}
+                />
+              </div>
             </div>
           </div>
+          <p className={`todo__text`} ref={todoTextRef}>
+            {todo.title}
+          </p>
         </div>
-        <p className={`todo__text`} ref={todoTextRef}>
-          {todo.title}
-        </p>
+        <div className="cross__icon__container" onClick={onCrossIconClick}>
+          <img src="./images/icon-cross.svg" alt="cross-icon" />
+        </div>
       </div>
-      <div className="cross__icon__container" onClick={onCrossIconClick}>
-        <img src="./images/icon-cross.svg" alt="cross-icon" />
-      </div>
-    </div>
+    </Draggable>
   );
 };
 
