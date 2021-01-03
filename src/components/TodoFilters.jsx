@@ -1,9 +1,10 @@
+//importing react library
 import React, { useRef } from 'react';
-
+//filters component
 const TodoFilters = ({ todos, setTodos, setFilterType }) => {
   //refs
   const listRef = useRef(null);
-  //toggling color
+  //toggling filter items color
   const toggleColor = event => {
     Array.from(listRef.current.children).forEach(item => {
       item.classList.remove('blue__text');

@@ -16,6 +16,7 @@
 
 .todo__app__header .icon__container {
   width: 35px;
+  cursor: pointer;
 }
 
 .todo__app__header .icon__container img {

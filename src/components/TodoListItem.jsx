@@ -1,17 +1,17 @@
+//importing react library
 import React, { useRef, useEffect } from 'react';
-
+//list Item component
 const TodoListItem = ({ todo, todos, setTodos, filterType, id }) => {
   //refs
   const circleRef = useRef(null);
   const checkIconRef = useRef(null);
   const todoTextRef = useRef(null);
   const todoListItem = useRef(null);
-  //filter Handler
-
-  //use Effect
+  //checking filter type (active/completed/all)
   useEffect(() => {
     switch (filterType) {
       case 'completed':
+        //making uncompleted items invisible
         todos.map(someTodo => {
           if (
             someTodo.isCompleted === false &&
@@ -23,6 +23,7 @@ const TodoListItem = ({ todo, todos, setTodos, filterType, id }) => {
         });
         break;
       case 'active':
+        //making completed items invisible
         todoListItem.current.classList.remove('invisible');
         todos.map(someTodo => {
           if (
@@ -35,6 +36,7 @@ const TodoListItem = ({ todo, todos, setTodos, filterType, id }) => {
         });
         break;
       default:
+        //all items should be visible (all filter)
         todoListItem.current.classList.remove('invisible');
         break;
     }
@@ -59,7 +61,7 @@ const TodoListItem = ({ todo, todos, setTodos, filterType, id }) => {
     );
     markAsComplete();
   };
-  //mark as complete
+  //mark as complete ui
   const markAsComplete = () => {
     checkIconRef.current.style.visibility =
       todo.isCompleted === false ? 'visible' : 'hidden';

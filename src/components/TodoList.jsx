@@ -1,8 +1,11 @@
-import React, { useState, useRef } from 'react';
+//importing react library
+import React from 'react';
+//importing components
 import TodoFilters from './TodoFilters';
 import TodoListItem from './TodoListItem';
-
+//list component
 const TodoList = ({ todos, setTodos, filterType, setFilterType }) => {
+  //returning todo items
   const returnedTodos = todos.map(todo => {
     return (
       <TodoListItem
@@ -15,6 +18,7 @@ const TodoList = ({ todos, setTodos, filterType, setFilterType }) => {
       />
     );
   });
+  //returning todo list
   return (
     <div className="todo__list">
       {returnedTodos}
