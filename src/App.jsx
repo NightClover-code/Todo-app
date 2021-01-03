@@ -4,6 +4,7 @@ import './css/app.css';
 import React, { useEffect, useState, useRef } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
 import { v4 as uuidv4 } from 'uuid';
 //importing components
 import TodoList from './components/TodoList';
@@ -68,7 +69,7 @@ const App = () => {
       }`}
       ref={appRef}
     >
-      <DndProvider backend={HTML5Backend}>
+      <DndProvider backend={TouchBackend}>
         <div className="wrapper">
           <TodoSearchBar
             user={user}
