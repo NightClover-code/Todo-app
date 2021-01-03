@@ -4,7 +4,6 @@ import './css/app.css';
 import React, { useEffect, useState, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 //react drag and drop dependencies
-import { DragDropContext } from 'react-dnd';
 import { DndProvider } from 'react-dnd';
 import { TouchBackend } from 'react-dnd-touch-backend';
 import { HTML5Backend } from 'react-dnd-html5-backend';
@@ -22,7 +21,7 @@ const defaultTodos = [
 //is a device touch
 const isTouchDevice = !!('ontouchstart' in window || navigator.maxTouchPoints);
 //App component
-const UnwrappedApp = () => {
+const App = () => {
   //refs
   const appRef = useRef(null);
   //state
@@ -74,45 +73,44 @@ const UnwrappedApp = () => {
       }`}
       ref={appRef}
     >
-      <div className="wrapper">
-        <TodoSearchBar
-          user={user}
-          setUser={setUser}
-          todos={todos}
-          setTodos={setTodos}
-          lightMode={lightMode}
-          setLightMode={setLightMode}
-        />
-        <TodoList
-          todos={todos}
-          setTodos={setTodos}
-          filterType={filterType}
-          setFilterType={setFilterType}
-          lightMode={lightMode}
-          toggleColor={toggleColor}
-          updateFilterType={updateFilterType}
-        />
-        <div
-          className={`todo__filters__separate ${
-            lightMode === true ? 'white__filters__separate' : ''
-          }`}
-        >
-          <TodoFilters
+      <DndProvider backend={isTouchDevice ? TouchBackend : HTML5Backend}>
+        <div className="wrapper">
+          <TodoSearchBar
+            user={user}
+            setUser={setUser}
+            todos={todos}
+            setTodos={setTodos}
+            lightMode={lightMode}
+            setLightMode={setLightMode}
+          />
+          <TodoList
+            todos={todos}
+            setTodos={setTodos}
+            filterType={filterType}
+            setFilterType={setFilterType}
             lightMode={lightMode}
             toggleColor={toggleColor}
             updateFilterType={updateFilterType}
           />
+          <div
+            className={`todo__filters__separate ${
+              lightMode === true ? 'white__filters__separate' : ''
+            }`}
+          >
+            <TodoFilters
+              lightMode={lightMode}
+              toggleColor={toggleColor}
+              updateFilterType={updateFilterType}
+            />
+          </div>
+          <footer>
+            <p className={lightMode === true ? 'white__footer__text' : ''}>
+              Drag and drop to reorder list
+            </p>
+          </footer>
         </div>
-        <footer>
-          <p className={lightMode === true ? 'white__footer__text' : ''}>
-            Drag and drop to reorder list
-          </p>
-        </footer>
-      </div>
+      </DndProvider>
     </div>
   );
 };
-const App = DragDropContext(isTouchDevice ? TouchBackend : HTML5Backend)(
-  UnwrappedApp
-);
 export default App;
