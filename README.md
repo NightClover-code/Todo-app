@@ -4,7 +4,7 @@
 
 ## The challenge
 
-The challenge was to build out this countdown timer and get it looking as close to the design as possible.
+The challenge was to build out this todo app and get it looking as close to the design as possible.
 
 What users can do on this page:
 
