@@ -20,4 +20,4 @@ What users can do on this page:
 
 ## Giving Feedback
 
-Any feedback on the code is welcome, thanks for sharing !
+Any feedback on the code is welcome, thanks for sharing ! 🙏
