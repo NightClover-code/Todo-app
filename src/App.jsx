@@ -18,7 +18,7 @@ const defaultTodos = [
   { title: 'Read for 1 hour', isCompleted: false, id: uuidv4() },
   { title: 'Wash the dishes', isCompleted: false, id: uuidv4() },
 ];
-//checking if a device is a touch device
+//checking if a device is a touch device for dnd
 const isTouchDevice = !!('ontouchstart' in window || navigator.maxTouchPoints);
 //App component
 const App = () => {

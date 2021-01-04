@@ -17,6 +17,20 @@ const TodoListItem = ({
   const checkIconRef = useRef(null);
   const todoTextRef = useRef(null);
   const todoListItem = useRef(null);
+  //useEffect
+  useEffect(() => {
+    todoTextRef.current.classList.remove('cross__text__dark');
+    todoTextRef.current.classList.remove('cross__text__light');
+    checkIconRef.current.style.visibility = 'hidden';
+    setTodos(
+      todos.map(someTodo => {
+        return {
+          ...someTodo,
+          isCompleted: false,
+        };
+      })
+    );
+  }, [lightMode]);
   //drag and drop funtionnality
   const [, drop] = useDrop({
     accept: 'card',
@@ -128,11 +142,9 @@ const TodoListItem = ({
   const markAsComplete = () => {
     checkIconRef.current.style.visibility =
       todo.isCompleted === false ? 'visible' : 'hidden';
-    if (!lightMode) {
-      todoTextRef.current.classList.toggle('cross__text__dark');
-    } else {
-      todoTextRef.current.classList.toggle('cross__text__light');
-    }
+    lightMode === true
+      ? todoTextRef.current.classList.toggle('cross__text__light')
+      : todoTextRef.current.classList.toggle('cross__text__dark');
   };
   return (
     <div
@@ -166,7 +178,7 @@ const TodoListItem = ({
             </div>
           </div>
         </div>
-        <p className={`todo__text`} ref={todoTextRef}>
+        <p className="todo__text" ref={todoTextRef}>
           {todo.title}
         </p>
       </div>
