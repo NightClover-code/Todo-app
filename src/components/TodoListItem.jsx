@@ -86,6 +86,7 @@ const TodoListItem = ({
     switch (filterType) {
       case 'completed':
         //making uncompleted items invisible
+        todoListItem.current.classList.remove('invisible');
         todos.map(someTodo => {
           if (
             someTodo.isCompleted === false &&
