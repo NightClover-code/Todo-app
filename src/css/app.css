@@ -335,6 +335,18 @@
           box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.1) !important;
 }
 
+.attribution {
+  color: #4d5066;
+  text-align: center;
+  padding: 2rem;
+  font-size: 15px;
+}
+
+.attribution a {
+  color: #484b6a;
+  letter-spacing: 1px;
+}
+
 .app__container {
   min-height: 100vh;
 }

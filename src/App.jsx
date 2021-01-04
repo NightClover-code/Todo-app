@@ -1,7 +1,7 @@
 //importing styles
 import './css/app.css';
 //importing react library and uuidv4 (random id's)
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 //react drag and drop dependencies
 import { DndProvider } from 'react-dnd';
@@ -9,6 +9,7 @@ import { TouchBackend } from 'react-dnd-touch-backend';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
 //importing components
+import Attribution from './components/Attribution';
 import TodoList from './components/TodoList';
 import TodoSearchBar from './components/TodoSearchBar';
 import TodoFilters from './components/TodoFilters';
@@ -22,8 +23,6 @@ const defaultTodos = [
 const isTouchDevice = !!('ontouchstart' in window || navigator.maxTouchPoints);
 //App component
 const App = () => {
-  //refs
-  const appRef = useRef(null);
   //state
   const [lightMode, setLightMode] = useState(false);
   const [user, setUser] = useState('');
@@ -52,6 +51,7 @@ const App = () => {
     saveToLocal();
   }, [todos]);
   //filter component lifted functions
+
   //toggling filter items color
   const toggleColor = (event, listRef) => {
     Array.from(listRef.current.children).forEach(item => {
@@ -71,7 +71,6 @@ const App = () => {
       className={`app__container ${
         lightMode === true ? 'light__background' : 'dark__background'
       }`}
-      ref={appRef}
     >
       <DndProvider backend={isTouchDevice ? TouchBackend : HTML5Backend}>
         <div className="wrapper">
@@ -108,6 +107,7 @@ const App = () => {
               Drag and drop to reorder list
             </p>
           </footer>
+          <Attribution />
         </div>
       </DndProvider>
     </div>
