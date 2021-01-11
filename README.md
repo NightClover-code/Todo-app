@@ -1,4 +1,4 @@
-# Frontend Mentor - Todo app
+# Todo app
 
 ![](./public/images/preview.png)
 
