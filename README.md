@@ -1,4 +1,4 @@
-# Todo app || Drag & Drop
+# Todo app | Drag & Drop
 
 ![](./public/images/preview.png)
 
